@@ -13,6 +13,15 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      animation: {
+        'loop-scroll': 'loop-scroll 5s linear infinite',
+      },
+      keyframes: {
+        'loop-scroll': {
+          from: { transform: 'translateX(120%)' },
+          to: { transform: 'translateX(-120%)' },
+        }
+      } 
     },
   },
   plugins: [],

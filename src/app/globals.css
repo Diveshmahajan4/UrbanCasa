@@ -3,31 +3,65 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --foreground-rgb: 241,239,240;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--foreground-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.marquee {
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee.animate .marquee__inner {
+  animation-play-state: running;
+}
+
+.marquee .marquee__inner {
+  width: fit-content;
+  display: flex;
+  position: relative;
+  transform: translate3d(calc(-25%), 0, 0);
+  animation: marquee 5s linear infinite;
+  animation-play-state: paused;
+}
+
+@media (min-width: 1536px) {
+  .marquee .marquee__inner {
+    transform: translate3d(calc(-25% + 10vw), 0, 0);
+    animation: marquee-lg 5s linear infinite;
+    animation-play-state: paused;
+  }
+}
+
+.marquee .row-title {
+  padding: 0 8vw;
+}
+
+@media (min-width: 1536px) {
+  .marquee .row-title {
+    padding: 0 10vw;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(calc(-25%), 0, 0);
+  }
+
+  100% {
+    transform: translate3d(calc(-50%), 0, 0);
+  }
+}
+
+@keyframes marquee-lg {
+  0% {
+    transform: translate3d(calc(-25% + 10vw), 0, 0);
+  }
+
+  100% {
+    transform: translate3d(calc(-50% + 10vw), 0, 0);
   }
 }
