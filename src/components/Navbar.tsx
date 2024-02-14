@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 
 const Navbar = () => {
   return (
-    <motion.div className='my-14 flex justify-between items-center'
+    <motion.div className='my-14 flex justify-between items-center px-8 md:px-20'
     initial={{ opacity: 0, y: -180 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{

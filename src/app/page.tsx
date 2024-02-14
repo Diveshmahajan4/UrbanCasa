@@ -5,12 +5,26 @@ import Loader from "@/components/Loader";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence,  LayoutGroup } from "framer-motion"
+import Section from "@/components/Section";
+import Section2 from "@/components/Section2";
+import Lenis from "@studio-freight/lenis/types";
 
 export default function Home() {
 
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const lenis = new Lenis()
+    
+    function raf() {
+      lenis.raf
+      requestAnimationFrame(raf)
+    }
+    
+    requestAnimationFrame(raf)
+  }, [])
 
   return (
     <main className="">
@@ -20,12 +34,11 @@ export default function Home() {
           <Loader setLoading={setLoading}/>
         </motion.div>
       ) : (
-        <div className="relative">
+        <div className="">
           <Navbar/>
           <Hero/>
-          <motion.div className='absolute top-[650px] left-4 -z-50 rounded-md'>
-            <motion.img src='/image5.jpg' alt='heroimage' width={1536} height={1200} />
-          </motion.div>
+          {/* <Section/> */}
+          {/* <Section2/> */}
         </div>
       )}
       </AnimatePresence>

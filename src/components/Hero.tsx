@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { motion } from "framer-motion"
+import Section from './Section';
 
 const banner = {
     animate: {
@@ -24,7 +25,8 @@ const banner = {
 
 const Hero = () => {
   return (
-    <section className='relative'>
+    <>
+    <section className='relative px-8 md:px-20 bg-transparent -z-50'>
         {/* Layer 1 */}
         <motion.div className='flex justify-between items-center z-10' variants={banner} initial="initial" animate="animate">
             <motion.p className='text-[190px] font-semibold leading-none' variants={letterAni} >urban</motion.p>
@@ -75,38 +77,10 @@ const Hero = () => {
 
         {/* Hero Image */}
     </section>
+    <Section/>
+    </>
   )
 }
-
-// interface BannerRowCenterProps {
-//     title: string;
-//     playMarquee: any; 
-//   }
-
-// const BannerRowCenter: React.FC<BannerRowCenterProps> = ({ title, playMarquee }) => {
-//     return (
-//       <div className={`banner-row marquee  ${playMarquee && "animate"}`}>
-//         <div className="marquee__inner">
-//           <AnimatedLetters title={title} />
-//           <AnimatedLetters title={title} />
-//           <AnimatedLetters title={title} />
-//           <AnimatedLetters title={title} />
-//         </div>
-//       </div>
-//     );
-// };
-
-// interface AnimatedLettersProps{
-//     title: string
-// }
-
-// const AnimatedLetters: React.FC<AnimatedLettersProps = ({title}) => (
-//     <span className="row-title">
-//       {title.split('').map((letter) => (
-//         <span className="row-letter">{letter}</span>
-//       ))}
-//     </span>
-//   );
 
 
 

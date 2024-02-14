@@ -48,7 +48,7 @@ const container = {
     },
     exit: {
         opacity: 0,
-        y: 400,
+        y: 900,
         scale: 1.7,
         transition: {
           ease: "backInOut",
@@ -75,7 +75,7 @@ const Loader: React.FC<LoaderProps> = ({setLoading}) => {
             <Image src="/image3.jpg" alt='image-3' height={200} width={210}/>
         </motion.div>
         <motion.div className='absolute top-[160px] left-[350px] z-0' variants={itemMain}>
-            <motion.img src="/image5.jpg" alt='image-5' height={200} width={700} 
+            <motion.img src="/image6.jpg" alt='image-5' height={200} width={700} 
             />
         </motion.div>
         <motion.div className='absolute top-[450px] left-[170px] z-10' variants={item}>

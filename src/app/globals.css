@@ -10,6 +10,10 @@ body {
   background-color: rgb(var(--foreground-rgb));
 }
 
+.no-padding-section {
+  padding: 0; /* Remove padding */
+}
+
 .marquee {
   position: relative;
   overflow: hidden;
