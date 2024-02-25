@@ -77,7 +77,7 @@ const Hero = () => {
 
         {/* Hero Image */}
     </section>
-    <Section/>
+    {/* <Section/> */}
     </>
   )
 }

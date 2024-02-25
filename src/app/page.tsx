@@ -37,8 +37,8 @@ export default function Home() {
         <div className="">
           <Navbar/>
           <Hero/>
-          {/* <Section/> */}
-          {/* <Section2/> */}
+          <Section/>
+          <Section2/>
         </div>
       )}
       </AnimatePresence>
