@@ -1,33 +1,129 @@
-import { Menu } from 'lucide-react'
-import React from 'react'
-import { motion } from "framer-motion"
+import { Menu, X, ShoppingBag } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from "framer-motion"
+import Link from 'next/link'
 
-
+const navLinks = [
+  { name: 'Designs', href: '/shop' },
+  { name: 'Collections', href: '/shop' },
+  { name: 'Customization', href: '#' },
+  { name: 'About', href: '#' },
+  { name: 'Why work with us?', href: '#' }
+];
 
 const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
-    <motion.div className='my-14 flex justify-between items-center px-8 md:px-20'
-    initial={{ opacity: 0, y: -180 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{
-      ease: "backInOut",
-      duration: 1,
-      delay: 0.6,
-    }}
-    >
-        <p className='text-3xl font-extrabold'>UrbanCasa</p>
-        <nav className='hidden md:block lg:block lg:visible text-sm font-semibold  tracking-wide'>
-          <div className='flex gap-10'>
-            <p>Designs</p>
-            <p>Collections</p>
-            <p>Customization</p>
-            <p>About</p>
-            <p>Why work with us?</p>
+    <>
+      <motion.div className='my-4 md:my-8 lg:my-14 flex justify-between items-center px-4 sm:px-8 md:px-20'
+        initial={{ opacity: 0, y: -180 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          ease: "backInOut",
+          duration: 1,
+          delay: 0.6,
+        }}
+      >
+        <Link href="/" className='text-xl sm:text-2xl md:text-3xl font-extrabold'>UrbanCasa</Link>
+        
+        {/* Desktop Navigation */}
+        <nav className='hidden md:block text-sm font-semibold tracking-wide'>
+          <div className='flex gap-5 lg:gap-10'>
+            {navLinks.map((link, index) => (
+              <Link 
+                key={index}
+                href={link.href}
+                className="hover:text-gray-700 transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
         </nav>
-        <p className='hidden md:block lg:block border-b-2 py-1 border-black text-sm font-semibold'>Let&apos;s work together</p>
-        <div className='visble md:hidden'><Menu/></div>
-    </motion.div>
+        
+        <div className="flex items-center gap-4">
+          <Link href="/cart" className="hover:text-gray-700 transition-colors">
+            <ShoppingBag size={20} />
+          </Link>
+          
+          <Link 
+            href="#" 
+            className='hidden md:block border-b-2 py-1 border-black text-sm font-semibold hover:border-gray-600 transition-colors'
+          >
+            Let&apos;s work together
+          </Link>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className='block md:hidden' 
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X size={24} className="text-black" />
+            ) : (
+              <Menu size={24} className="text-black" />
+            )}
+          </button>
+        </div>
+      </motion.div>
+      
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            className="fixed inset-0 bg-white z-50 flex flex-col pt-24 px-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex flex-col space-y-6 text-lg font-medium">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Link 
+                    href={link.href}
+                    className="py-2 block border-b border-gray-100 hover:text-gray-600 transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 }}
+                className="pt-4"
+              >
+                <Link 
+                  href="#" 
+                  className='inline-block border-b-2 py-1 border-black text-sm font-semibold'
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Let&apos;s work together
+                </Link>
+              </motion.div>
+            </div>
+            
+            <div className="mt-auto mb-10">
+              <p className="text-gray-500 text-sm">© {new Date().getFullYear()} UrbanCasa</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 

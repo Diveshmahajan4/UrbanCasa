@@ -9,7 +9,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence,  LayoutGroup } from "framer-motion"
 import Section from "@/components/Section";
 import Section2 from "@/components/Section2";
+import Section3 from "@/components/Section3";
 import Lenis from "@studio-freight/lenis/types";
+import Footer from "@/components/Footer";
 
 export default function Home() {
 
@@ -39,6 +41,8 @@ export default function Home() {
           <Hero/>
           <Section/>
           <Section2/>
+          <Section3/>
+          <Footer/>
         </div>
       )}
       </AnimatePresence>

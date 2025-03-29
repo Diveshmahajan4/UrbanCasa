@@ -65,13 +65,13 @@ export default function Cart() {
   }
 
   return (
-    <main className="min-h-screen pb-20">
+    <main className="flex-1 pb-20">
       <Navbar />
       
       {/* Page Title */}
-      <div className="px-8 md:px-20 pt-8 pb-12">
+      <div className="px-4 sm:px-8 md:px-20 pt-4 sm:pt-8 pb-6 sm:pb-12">
         <motion.h1 
-          className="text-4xl font-semibold mb-4"
+          className="text-2xl sm:text-4xl font-semibold mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -92,9 +92,9 @@ export default function Cart() {
       </div>
       
       {checkoutStep === 'cart' ? (
-        <div className="px-8 md:px-20">
+        <div className="px-4 sm:px-8 md:px-20">
           {cartItems.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Cart Items */}
               <motion.div 
                 className="lg:col-span-2"
@@ -113,7 +113,7 @@ export default function Cart() {
                   {cartItems.map(item => (
                     <motion.div 
                       key={item.id}
-                      className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8 items-center"
+                      className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6 sm:mb-8 items-center border-b border-gray-100 pb-6 sm:pb-8 last:border-0 last:pb-0"
                       variants={itemVariants}
                       initial="hidden"
                       animate="visible"
@@ -122,7 +122,7 @@ export default function Cart() {
                       {/* Product Info */}
                       <div className="col-span-6 flex gap-4">
                         <div 
-                          className="w-24 h-24 relative rounded-md overflow-hidden bg-gray-100 flex-shrink-0 cursor-pointer"
+                          className="w-20 h-20 sm:w-24 sm:h-24 relative rounded-md overflow-hidden bg-gray-100 flex-shrink-0 cursor-pointer"
                           onClick={() => handleProductClick(item.id)}
                         >
                           <Image 
@@ -135,15 +135,15 @@ export default function Cart() {
                         
                         <div className="flex flex-col justify-center">
                           <h3 
-                            className="font-medium text-lg cursor-pointer hover:underline"
+                            className="font-medium text-base sm:text-lg cursor-pointer hover:underline"
                             onClick={() => handleProductClick(item.id)}
                           >
                             {item.name}
                           </h3>
-                          <p className="text-gray-500 text-sm">{item.category}</p>
+                          <p className="text-gray-500 text-xs sm:text-sm">{item.category}</p>
                           <button 
                             onClick={() => removeFromCart(item.id)}
-                            className="flex items-center gap-1 text-gray-400 hover:text-black transition-colors text-sm mt-2 w-fit"
+                            className="flex items-center gap-1 text-gray-400 hover:text-black transition-colors text-xs sm:text-sm mt-2 w-fit"
                           >
                             <Trash2 size={14} />
                             <span>Remove</span>
@@ -152,25 +152,25 @@ export default function Cart() {
                       </div>
                       
                       {/* Price */}
-                      <div className="col-span-2 text-center">
-                        <p className="md:hidden text-gray-500 text-sm">Price:</p>
-                        <p>${item.price.toLocaleString()}</p>
+                      <div className="col-span-2 text-center flex justify-between md:block">
+                        <p className="md:hidden text-gray-500 text-xs sm:text-sm">Price:</p>
+                        <p className="text-sm sm:text-base">${item.price.toLocaleString()}</p>
                       </div>
                       
                       {/* Quantity */}
-                      <div className="col-span-2 flex justify-center">
-                        <p className="md:hidden text-gray-500 text-sm mr-2">Quantity:</p>
+                      <div className="col-span-2 flex justify-between md:justify-center items-center">
+                        <p className="md:hidden text-gray-500 text-xs sm:text-sm">Quantity:</p>
                         <div className="flex items-center border border-gray-200 rounded-md">
                           <button 
-                            className="px-3 py-1 text-gray-500 hover:text-black transition-colors"
+                            className="px-2 sm:px-3 py-1 text-gray-500 hover:text-black transition-colors"
                             onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
                             disabled={item.quantity <= 1}
                           >
                             <Minus size={14} />
                           </button>
-                          <span className="px-3 py-1 border-x border-gray-200">{item.quantity}</span>
+                          <span className="px-2 sm:px-3 py-1 border-x border-gray-200 text-sm">{item.quantity}</span>
                           <button 
-                            className="px-3 py-1 text-gray-500 hover:text-black transition-colors"
+                            className="px-2 sm:px-3 py-1 text-gray-500 hover:text-black transition-colors"
                             onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
                           >
                             <Plus size={14} />
@@ -179,20 +179,20 @@ export default function Cart() {
                       </div>
                       
                       {/* Total */}
-                      <div className="col-span-2 text-center font-medium">
-                        <p className="md:hidden text-gray-500 text-sm">Total:</p>
-                        <p>${(item.price * item.quantity).toLocaleString()}</p>
+                      <div className="col-span-2 text-center flex justify-between md:block">
+                        <p className="md:hidden text-gray-500 text-xs sm:text-sm">Total:</p>
+                        <p className="font-medium text-sm sm:text-base">${(item.price * item.quantity).toLocaleString()}</p>
                       </div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
                 
                 <motion.div
-                  className="flex justify-between items-center border-t border-gray-200 pt-6 mt-10"
+                  className="flex justify-between items-center border-t border-gray-200 pt-6 mt-8 sm:mt-10"
                   variants={fadeVariants}
                 >
                   <button 
-                    className="text-gray-500 hover:text-black transition-colors flex items-center gap-2"
+                    className="text-gray-500 hover:text-black transition-colors flex items-center gap-2 text-sm sm:text-base"
                     onClick={clearCart}
                   >
                     <Trash2 size={16} />
@@ -203,37 +203,37 @@ export default function Cart() {
               
               {/* Order Summary */}
               <motion.div 
-                className="bg-gray-50 p-6 rounded-lg h-fit"
+                className="bg-gray-50 p-4 sm:p-6 rounded-lg h-fit sticky top-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
+                <h2 className="text-lg sm:text-xl font-semibold mb-6">Order Summary</h2>
                 
                 <div className="space-y-4 mb-6">
-                  <div className="flex justify-between">
+                  <div className="flex justify-between text-sm sm:text-base">
                     <span className="text-gray-600">Subtotal</span>
                     <span className="font-medium">${cartTotal.toLocaleString()}</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between text-sm sm:text-base">
                     <span className="text-gray-600">Shipping</span>
                     <span className="font-medium">Free</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between text-sm sm:text-base">
                     <span className="text-gray-600">Tax</span>
                     <span className="font-medium">${(cartTotal * 0.07).toFixed(2)}</span>
                   </div>
                 </div>
                 
                 <div className="border-t border-gray-200 pt-4 mb-6">
-                  <div className="flex justify-between font-semibold text-lg">
+                  <div className="flex justify-between font-semibold text-base sm:text-lg">
                     <span>Total</span>
                     <span>${(cartTotal * 1.07).toFixed(2)}</span>
                   </div>
                 </div>
                 
                 <motion.button 
-                  className="w-full py-4 bg-black text-white font-medium rounded-md flex justify-center items-center gap-2"
+                  className="w-full py-3 sm:py-4 bg-black text-white font-medium rounded-md flex justify-center items-center gap-2"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setCheckoutStep('checkout')}
@@ -245,14 +245,14 @@ export default function Cart() {
             </div>
           ) : (
             <motion.div 
-              className="flex flex-col items-center justify-center py-20"
+              className="flex flex-col items-center justify-center py-12 sm:py-20"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <ShoppingBag size={64} className="text-gray-300 mb-6" />
-              <h2 className="text-2xl font-medium mb-2">Your cart is empty</h2>
-              <p className="text-gray-500 mb-8">Looks like you haven't added any products to your cart yet.</p>
+              <ShoppingBag size={48} className="text-gray-300 mb-6" />
+              <h2 className="text-xl sm:text-2xl font-medium mb-2">Your cart is empty</h2>
+              <p className="text-gray-500 mb-8 text-center">Looks like you haven't added any products to your cart yet.</p>
               <Link href="/shop">
                 <motion.button 
                   className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"
@@ -267,24 +267,24 @@ export default function Cart() {
         </div>
       ) : (
         <motion.div 
-          className="px-8 md:px-20"
+          className="px-4 sm:px-8 md:px-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <div className="lg:col-span-2">
-              <h2 className="text-xl font-semibold mb-6">Shipping Information</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-6">Shipping Information</h2>
               {/* Simple checkout form placeholder */}
               <div className="space-y-6">
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       First Name
                     </label>
                     <input 
                       type="text" 
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                     />
                   </div>
                   <div>
@@ -293,7 +293,7 @@ export default function Cart() {
                     </label>
                     <input 
                       type="text" 
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                     />
                   </div>
                 </div>
@@ -304,7 +304,7 @@ export default function Cart() {
                   </label>
                   <input 
                     type="email" 
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                    className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                   />
                 </div>
                 
@@ -314,18 +314,18 @@ export default function Cart() {
                   </label>
                   <input 
                     type="text" 
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                    className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                   />
                 </div>
                 
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       City
                     </label>
                     <input 
                       type="text" 
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                     />
                   </div>
                   <div>
@@ -334,7 +334,7 @@ export default function Cart() {
                     </label>
                     <input 
                       type="text" 
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                     />
                   </div>
                   <div>
@@ -343,7 +343,7 @@ export default function Cart() {
                     </label>
                     <input 
                       type="text" 
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black/20"
                     />
                   </div>
                 </div>
@@ -361,37 +361,37 @@ export default function Cart() {
             
             {/* Order Summary (Same as in cart) */}
             <motion.div 
-              className="bg-gray-50 p-6 rounded-lg h-fit"
+              className="bg-gray-50 p-4 sm:p-6 rounded-lg h-fit sticky top-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
+              <h2 className="text-lg sm:text-xl font-semibold mb-6">Order Summary</h2>
               
               <div className="space-y-4 mb-6">
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm sm:text-base">
                   <span className="text-gray-600">Subtotal ({cartItems.length} items)</span>
                   <span className="font-medium">${cartTotal.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm sm:text-base">
                   <span className="text-gray-600">Shipping</span>
                   <span className="font-medium">Free</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm sm:text-base">
                   <span className="text-gray-600">Tax</span>
                   <span className="font-medium">${(cartTotal * 0.07).toFixed(2)}</span>
                 </div>
               </div>
               
               <div className="border-t border-gray-200 pt-4 mb-6">
-                <div className="flex justify-between font-semibold text-lg">
+                <div className="flex justify-between font-semibold text-base sm:text-lg">
                   <span>Total</span>
                   <span>${(cartTotal * 1.07).toFixed(2)}</span>
                 </div>
               </div>
               
               <motion.button 
-                className="w-full py-4 bg-black text-white font-medium rounded-md flex justify-center items-center gap-2"
+                className="w-full py-3 sm:py-4 bg-black text-white font-medium rounded-md flex justify-center items-center gap-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => alert('Order placed successfully!')}

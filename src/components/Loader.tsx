@@ -61,29 +61,47 @@ const container = {
 const Loader: React.FC<LoaderProps> = ({setLoading}) => {
 
   return (
-    <motion.div className='relative h-[200vh] overflow-hidden'
+    <motion.div className='relative h-screen md:h-[200vh] overflow-hidden w-full'
         variants={container}
         initial="hidden"
         animate="show"
         exit="exit"
         onAnimationComplete={() => setLoading(false)}
     >
-        <motion.div className='absolute top-11 left-[170px] z-10' variants={item}>
-            <Image src="/image1.jpg" alt='image-1' height={200} width={210}/>
-        </motion.div>
-        <motion.div className='absolute top-11 right-[170px] z-10'  variants={item}>
-            <Image src="/image3.jpg" alt='image-3' height={200} width={210}/>
-        </motion.div>
-        <motion.div className='absolute top-[160px] left-[350px] z-0' variants={itemMain}>
-            <motion.img src="/image6.jpg" alt='image-5' height={200} width={700} 
-            />
-        </motion.div>
-        <motion.div className='absolute top-[450px] left-[170px] z-10' variants={item}>
-            <Image src="/image2.jpg" alt='image-2' height={200} width={350}/>
-        </motion.div>
-        <motion.div className='absolute top-[460px] right-[170px] -z-10' variants={item}>
-            <Image src="/image4.jpg" alt='image-4' height={200} width={350}/>
-        </motion.div>
+        {/* Mobile layout - Stack images vertically */}
+        <div className="block md:hidden">
+          <motion.div className='absolute top-[10%] left-[10%] right-[10%] z-10' variants={item}>
+              <Image src="/image1.jpg" alt='image-1' height={200} width={300} className="w-full h-auto rounded-lg"/>
+          </motion.div>
+          <motion.div className='absolute top-[30%] left-[15%] right-[15%] z-20' variants={itemMain}>
+              <Image src="/image6.jpg" alt='image-main' height={200} width={300} className="w-full h-auto rounded-lg"/>
+          </motion.div>
+          <motion.div className='absolute top-[50%] left-[10%] right-[10%] z-10' variants={item}>
+              <Image src="/image2.jpg" alt='image-2' height={200} width={300} className="w-full h-auto rounded-lg"/>
+          </motion.div>
+          <motion.div className='absolute top-[70%] left-[15%] right-[15%] z-30' variants={item}>
+              <Image src="/image4.jpg" alt='image-4' height={200} width={300} className="w-full h-auto rounded-lg"/>
+          </motion.div>
+        </div>
+
+        {/* Desktop layout */}
+        <div className="hidden md:block">
+          <motion.div className='absolute top-11 left-[10%] z-10' variants={item}>
+              <Image src="/image1.jpg" alt='image-1' height={200} width={210} className="rounded-lg"/>
+          </motion.div>
+          <motion.div className='absolute top-11 right-[10%] z-10' variants={item}>
+              <Image src="/image3.jpg" alt='image-3' height={200} width={210} className="rounded-lg"/>
+          </motion.div>
+          <motion.div className='absolute top-[160px] left-[20%] right-[20%] z-0' variants={itemMain}>
+              <Image src="/image6.jpg" alt='image-5' height={200} width={700} className="w-full h-auto rounded-lg"/>
+          </motion.div>
+          <motion.div className='absolute top-[450px] left-[10%] z-10' variants={item}>
+              <Image src="/image2.jpg" alt='image-2' height={200} width={350} className="rounded-lg"/>
+          </motion.div>
+          <motion.div className='absolute top-[460px] right-[10%] -z-10' variants={item}>
+              <Image src="/image4.jpg" alt='image-4' height={200} width={350} className="rounded-lg"/>
+          </motion.div>
+        </div>
     </motion.div>
   )
 }

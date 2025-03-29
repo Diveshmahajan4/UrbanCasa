@@ -168,19 +168,19 @@ export default function Shop() {
   }
 
   return (
-    <main className="min-h-screen pb-20">
+    <main className="flex-1 pb-20">
       <Navbar />
       
       {/* Shop Hero Section */}
       <motion.div
-        className="relative h-[40vh] overflow-hidden mb-12"
+        className="relative h-[30vh] sm:h-[40vh] overflow-hidden mb-8 sm:mb-12"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
         <div className="absolute inset-0 flex items-center justify-center bg-black/10">
           <motion.h1 
-            className="text-[90px] font-semibold text-white"
+            className="text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[90px] font-semibold text-white"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
@@ -200,10 +200,10 @@ export default function Shop() {
       </motion.div>
       
       {/* Filter Section */}
-      <div className="px-8 md:px-20 mb-8">
-        <div className="flex justify-between items-center mb-4">
+      <div className="px-4 sm:px-8 md:px-20 mb-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-4">
           <motion.h2 
-            className="text-3xl font-semibold"
+            className="text-2xl sm:text-3xl font-semibold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -232,7 +232,7 @@ export default function Shop() {
               whileTap={{ scale: 0.95 }}
             >
               <Filter size={18} />
-              <span>Filter & Sort</span>
+              <span className="text-sm sm:text-base">Filter & Sort</span>
             </motion.button>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function Shop() {
                     {categories.map(category => (
                       <button
                         key={category}
-                        className={`px-4 py-2 text-sm rounded-full transition-all ${
+                        className={`px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-full transition-all ${
                           activeCategory === category
                             ? 'bg-black text-white'
                             : 'bg-white border border-gray-200 hover:border-black'
@@ -266,13 +266,13 @@ export default function Shop() {
                   </div>
                 </div>
                 
-                <div>
+                <div className="mt-4 md:mt-0">
                   <h3 className="text-sm font-semibold mb-3">Sort By</h3>
                   <div className="flex flex-wrap gap-2">
                     {sortOptions.map(option => (
                       <button
                         key={option}
-                        className={`px-4 py-2 text-sm rounded-full transition-all ${
+                        className={`px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-full transition-all ${
                           activeSortOption === option
                             ? 'bg-black text-white'
                             : 'bg-white border border-gray-200 hover:border-black'
@@ -292,7 +292,7 @@ export default function Shop() {
       
       {/* Products Grid */}
       <motion.div 
-        className="px-8 md:px-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+        className="px-4 sm:px-8 md:px-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -306,7 +306,7 @@ export default function Shop() {
             transition={{ duration: 0.3 }}
           >
             <div 
-              className="relative aspect-square overflow-hidden bg-gray-100 mb-4 cursor-pointer"
+              className="relative aspect-square overflow-hidden bg-gray-100 mb-4 cursor-pointer rounded-md"
               onClick={() => handleProductClick(product.id)}
             >
               <Image
@@ -317,7 +317,7 @@ export default function Shop() {
               />
               
               {product.isNew && (
-                <span className="absolute top-3 left-3 bg-black text-white text-xs px-2 py-1 rounded">
+                <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-black text-white text-xs px-2 py-1 rounded">
                   New
                 </span>
               )}
@@ -348,13 +348,13 @@ export default function Shop() {
             </div>
             
             <h3 
-              className="font-medium text-lg cursor-pointer hover:underline"
+              className="font-medium text-base sm:text-lg cursor-pointer hover:underline"
               onClick={() => handleProductClick(product.id)}
             >
               {product.name}
             </h3>
             <div className="flex justify-between items-center mt-1">
-              <p className="text-gray-700">{product.category}</p>
+              <p className="text-gray-700 text-sm">{product.category}</p>
               <p className="font-semibold">${product.price}</p>
             </div>
           </motion.div>
@@ -364,12 +364,12 @@ export default function Shop() {
       {/* Empty State */}
       {filteredProducts.length === 0 && (
         <motion.div 
-          className="flex flex-col items-center justify-center py-20 px-4 text-center"
+          className="flex flex-col items-center justify-center py-16 sm:py-20 px-4 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <h3 className="text-2xl font-medium mb-2">No products found</h3>
+          <h3 className="text-xl sm:text-2xl font-medium mb-2">No products found</h3>
           <p className="text-gray-500 mb-6">Try adjusting your filters or browse our other categories.</p>
           <button 
             className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"

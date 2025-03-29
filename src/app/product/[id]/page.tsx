@@ -188,10 +188,10 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <main className="min-h-screen">
+      <main className="flex-1 pb-20">
         <Navbar />
-        <div className="px-8 md:px-20 py-16 text-center">
-          <h1 className="text-3xl font-semibold mb-4">Product Not Found</h1>
+        <div className="px-4 sm:px-8 md:px-20 py-8 sm:py-16 text-center">
+          <h1 className="text-2xl sm:text-3xl font-semibold mb-4">Product Not Found</h1>
           <p className="text-gray-500 mb-8">The product you're looking for doesn't exist or has been removed.</p>
           <button 
             className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
@@ -205,10 +205,10 @@ export default function ProductPage() {
   }
 
   return (
-    <main className="min-h-screen pb-20">
+    <main className="flex-1 pb-20">
       <Navbar />
       
-      <div className="px-8 md:px-20 pt-8 pb-12">
+      <div className="px-4 sm:px-8 md:px-20 pt-4 sm:pt-8 pb-6 sm:pb-12">
         <motion.div
           className="flex items-center gap-2 text-gray-500 hover:text-black transition-colors cursor-pointer"
           initial={{ opacity: 0 }}
@@ -221,7 +221,7 @@ export default function ProductPage() {
         </motion.div>
       </div>
       
-      <div className="px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+      <div className="px-4 sm:px-8 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12 sm:mb-20">
         {/* Product Image */}
         <motion.div
           className="aspect-square relative rounded-lg overflow-hidden bg-gray-100"
@@ -248,9 +248,9 @@ export default function ProductPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-3xl font-semibold mb-2">{product.name}</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold mb-2">{product.name}</h1>
           <p className="text-gray-500 mb-4">{product.category}</p>
-          <p className="text-2xl font-bold mb-6">${product.price}</p>
+          <p className="text-xl sm:text-2xl font-bold mb-6">${product.price}</p>
           
           <div className="mb-6">
             <p className="text-gray-700 leading-relaxed mb-4">{product.description}</p>
@@ -266,15 +266,15 @@ export default function ProductPage() {
             <p className="font-medium mb-2">Quantity</p>
             <div className="flex items-center border border-gray-200 rounded-md w-fit">
               <button 
-                className="px-4 py-2 text-gray-500 hover:text-black transition-colors"
+                className="px-3 sm:px-4 py-2 text-gray-500 hover:text-black transition-colors"
                 onClick={() => handleQuantityChange(quantity - 1)}
                 disabled={quantity <= 1}
               >
                 <Minus size={16} />
               </button>
-              <span className="px-4 py-2 border-x border-gray-200">{quantity}</span>
+              <span className="px-3 sm:px-4 py-2 border-x border-gray-200">{quantity}</span>
               <button 
-                className="px-4 py-2 text-gray-500 hover:text-black transition-colors"
+                className="px-3 sm:px-4 py-2 text-gray-500 hover:text-black transition-colors"
                 onClick={() => handleQuantityChange(quantity + 1)}
               >
                 <Plus size={16} />
@@ -282,9 +282,9 @@ export default function ProductPage() {
             </div>
           </div>
           
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <motion.button 
-              className="flex-1 py-4 bg-black text-white font-medium rounded-md flex justify-center items-center gap-2"
+              className="flex-1 py-3 sm:py-4 bg-black text-white font-medium rounded-md flex justify-center items-center gap-2"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleAddToCart}
@@ -294,7 +294,7 @@ export default function ProductPage() {
             </motion.button>
             
             <motion.button 
-              className="p-4 border border-gray-200 rounded-md"
+              className="p-3 sm:p-4 border border-gray-200 rounded-md sm:w-auto flex justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -307,24 +307,24 @@ export default function ProductPage() {
       {/* Suggested Products Section */}
       {suggestedProducts.length > 0 && (
         <motion.section
-          className="px-8 md:px-20 mt-20"
+          className="px-4 sm:px-8 md:px-20 mt-12 sm:mt-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-semibold">You May Also Like</h2>
+          <div className="flex justify-between items-center mb-6 sm:mb-8">
+            <h2 className="text-xl sm:text-2xl font-semibold">You May Also Like</h2>
             <motion.button 
               className="flex items-center gap-2 text-gray-500 hover:text-black transition-colors"
               whileHover={{ x: 5 }}
               onClick={() => router.push('/shop')}
             >
-              <span>View All</span>
+              <span className="hidden sm:inline">View All</span>
               <ArrowRight size={16} />
             </motion.button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
             {suggestedProducts.map((suggestedProduct) => (
               <motion.div
                 key={suggestedProduct.id}
@@ -333,7 +333,7 @@ export default function ProductPage() {
                 transition={{ duration: 0.3 }}
                 onClick={() => handleProductClick(suggestedProduct.id)}
               >
-                <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-md mb-4">
+                <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-md mb-3 sm:mb-4">
                   <Image
                     src={suggestedProduct.imageSrc}
                     alt={suggestedProduct.name}
@@ -341,16 +341,16 @@ export default function ProductPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {suggestedProduct.isNew && (
-                    <span className="absolute top-3 left-3 bg-black text-white text-xs px-2 py-1 rounded">
+                    <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-black text-white text-xs px-2 py-1 rounded">
                       New
                     </span>
                   )}
                 </div>
                 
-                <h3 className="font-medium text-base group-hover:underline">{suggestedProduct.name}</h3>
+                <h3 className="font-medium text-sm sm:text-base group-hover:underline">{suggestedProduct.name}</h3>
                 <div className="flex justify-between items-center mt-1">
-                  <p className="text-gray-500 text-sm">{suggestedProduct.category}</p>
-                  <p className="font-semibold">${suggestedProduct.price}</p>
+                  <p className="text-gray-500 text-xs sm:text-sm">{suggestedProduct.category}</p>
+                  <p className="font-semibold text-sm sm:text-base">${suggestedProduct.price}</p>
                 </div>
               </motion.div>
             ))}
