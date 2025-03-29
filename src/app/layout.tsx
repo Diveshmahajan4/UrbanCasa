@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { CartProvider } from "@/context/CartContext";
  
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
@@ -23,9 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <MaxWidthWrapper>
-        {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </MaxWidthWrapper>
-        </body>
+      </body>
     </html>
   );
 }
