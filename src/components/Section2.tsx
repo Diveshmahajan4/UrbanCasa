@@ -103,7 +103,7 @@ const Section2 = () => {
               transition={{ duration: 0.8 }}
             >
               <Image 
-                src="/image8.jpg" 
+                src="/image12.jpg" 
                 alt="Elegant bedroom furniture" 
                 fill 
                 className="object-cover"
@@ -121,7 +121,7 @@ const Section2 = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <Image 
-                src="/image7.jpg" 
+                src="/image11.jpg" 
                 alt="Modern office setup" 
                 fill 
                 className="object-cover"
@@ -139,7 +139,7 @@ const Section2 = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <Image 
-                src="/image2.jpg" 
+                src="/image10.jpg" 
                 alt="Contemporary dining table" 
                 fill 
                 className="object-cover"

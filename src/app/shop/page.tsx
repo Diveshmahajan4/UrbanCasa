@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar'
 import { Filter, ShoppingCart, Heart } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
 import { useRouter } from 'next/navigation'
+import Footer from '@/components/Footer'
 
 // Sample furniture product data
 type Product = {
@@ -24,7 +25,7 @@ const products: Product[] = [
     name: 'Minimalist Sofa',
     category: 'living room',
     price: 1299,
-    imageSrc: '/image1.jpg',
+    imageSrc: '/image7.jpg',
     isNew: true,
   },
   {
@@ -45,10 +46,10 @@ const products: Product[] = [
   },
   {
     id: 4,
-    name: 'Bedroom Nightstand',
+    name: 'Bed',
     category: 'bedroom',
     price: 349,
-    imageSrc: '/image4.jpg',
+    imageSrc: '/image12.jpg',
     isNew: false,
   },
   {
@@ -56,7 +57,7 @@ const products: Product[] = [
     name: 'Elegant Coffee Table',
     category: 'living room',
     price: 499,
-    imageSrc: '/image6.jpg',
+    imageSrc: '/image8.jpg',
     isNew: false,
   },
   {
@@ -64,7 +65,7 @@ const products: Product[] = [
     name: 'Compact Desk',
     category: 'office',
     price: 749,
-    imageSrc: '/image7.jpg',
+    imageSrc: '/image1.jpg',
     isNew: true,
   },
   {
@@ -72,7 +73,7 @@ const products: Product[] = [
     name: 'Platform Bed',
     category: 'bedroom',
     price: 1499,
-    imageSrc: '/image8.jpg',
+    imageSrc: '/image9.jpg',
     isNew: false,
   },
   {
@@ -80,7 +81,7 @@ const products: Product[] = [
     name: 'Modern Bookshelf',
     category: 'office',
     price: 899,
-    imageSrc: '/image5.jpg',
+    imageSrc: '/image4.jpg',
     isNew: true,
   },
 ]
@@ -192,7 +193,7 @@ export default function Shop() {
           </motion.h1>
         </div>
         <Image 
-          src="/image5.jpg" 
+          src="/image14.jpg" 
           alt="Shop collection banner"
           fill 
           className="object-cover object-center"
@@ -379,6 +380,8 @@ export default function Shop() {
           </button>
         </motion.div>
       )}
+
+      <Footer/>
     </main>
   )
 }

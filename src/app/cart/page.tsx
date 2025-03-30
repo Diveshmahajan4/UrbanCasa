@@ -252,7 +252,7 @@ export default function Cart() {
             >
               <ShoppingBag size={48} className="text-gray-300 mb-6" />
               <h2 className="text-xl sm:text-2xl font-medium mb-2">Your cart is empty</h2>
-              <p className="text-gray-500 mb-8 text-center">Looks like you haven't added any products to your cart yet.</p>
+              <p className="text-gray-500 mb-8 text-center">Looks like you haven&apos;t added any products to your cart yet.</p>
               <Link href="/shop">
                 <motion.button 
                   className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors flex items-center gap-2"

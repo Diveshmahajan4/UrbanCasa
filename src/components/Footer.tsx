@@ -28,25 +28,25 @@ const Footer = () => {
     {
       title: 'About',
       links: [
-        { name: 'Our Story', href: '#' },
-        { name: 'Craftsmanship', href: '#' },
-        { name: 'Sustainability', href: '#' },
-        { name: 'Design Process', href: '#' },
+        { name: 'Our Story', href: '/about' },
+        { name: 'Craftsmanship', href: '/about#craftsmanship' },
+        { name: 'Sustainability', href: '/about#sustainability' },
+        { name: 'Our Team', href: '/about#team' },
       ]
     },
     {
       title: 'Support',
       links: [
-        { name: 'Contact Us', href: '#' },
-        { name: 'FAQ', href: '#' },
-        { name: 'Shipping & Returns', href: '#' },
-        { name: 'Care Instructions', href: '#' },
+        { name: 'Contact Us', href: '/support#contact' },
+        { name: 'FAQ', href: '/support#faq' },
+        { name: 'Shipping & Returns', href: '/support#shipping' },
+        { name: 'Product Care', href: '/support#care' },
       ]
     },
   ]
 
   return (
-    <footer className="border-t border-gray-200 mt-auto pt-16 pb-8">
+    <footer className="border-t border-gray-200 mt-20 pt-16 pb-8">
       <div className="px-8 md:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand and Description */}

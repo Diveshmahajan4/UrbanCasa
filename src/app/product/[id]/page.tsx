@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar'
 import { ArrowLeft, Minus, Plus, ShoppingCart, Heart, ArrowRight } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 import { useCart } from '@/context/CartContext'
+import Footer from '@/components/Footer'
 
 const products = [
   {
@@ -192,7 +193,7 @@ export default function ProductPage() {
         <Navbar />
         <div className="px-4 sm:px-8 md:px-20 py-8 sm:py-16 text-center">
           <h1 className="text-2xl sm:text-3xl font-semibold mb-4">Product Not Found</h1>
-          <p className="text-gray-500 mb-8">The product you're looking for doesn't exist or has been removed.</p>
+          <p className="text-gray-500 mb-8">The product you&apos;re looking for doesn&apos;t exist or has been removed.</p>
           <button 
             className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
             onClick={() => router.push('/shop')}
@@ -357,6 +358,7 @@ export default function ProductPage() {
           </div>
         </motion.section>
       )}
+      <Footer/>
     </main>
   )
 } 

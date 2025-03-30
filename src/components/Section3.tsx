@@ -9,21 +9,21 @@ const categories = [
     id: 1,
     name: 'Living Room',
     description: 'Create a space that brings people together with our stunning living room collections.',
-    image: '/image1.jpg',
+    image: '/image7.jpg',
     link: '/shop?category=living%20room'
   },
   {
     id: 2,
     name: 'Bedroom',
     description: 'Transform your bedroom into a serene retreat with our comfortable and stylish designs.',
-    image: '/image8.jpg',
+    image: '/image9.jpg',
     link: '/shop?category=bedroom'
   },
   {
     id: 3,
     name: 'Office',
     description: 'Elevate your workspace with furniture that inspires productivity and creativity.',
-    image: '/image7.jpg',
+    image: '/image8.jpg',
     link: '/shop?category=office'
   },
   {
