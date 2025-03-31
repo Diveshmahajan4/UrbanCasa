@@ -6,7 +6,7 @@ import Link from 'next/link'
 const navLinks = [
   { name: 'Designs', href: '/shop' },
   { name: 'Collections', href: '/shop' },
-  { name: 'Customization', href: '#' },
+  { name: 'Customization', href: '/support#contact' },
   { name: 'About', href: '/about' },
   { name: 'Support', href: '/support' }
 ];
@@ -52,7 +52,7 @@ const Navbar = () => {
           </Link>
           
           <Link 
-            href="#" 
+            href="https://divesh.vercel.app/" 
             className='hidden md:block border-b-2 py-1 border-black text-sm font-semibold hover:border-gray-600 transition-colors'
           >
             Let&apos;s work together
@@ -108,7 +108,7 @@ const Navbar = () => {
                 className="pt-4"
               >
                 <Link 
-                  href="#" 
+                  href="https://divesh.vercel.app/" 
                   className='inline-block border-b-2 py-1 border-black text-sm font-semibold'
                   onClick={() => setMobileMenuOpen(false)}
                 >
